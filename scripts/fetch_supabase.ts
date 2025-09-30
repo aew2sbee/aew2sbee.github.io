@@ -42,7 +42,7 @@ async function fetchAndSaveStudyData() {
       timestamp,
       users (
         id,
-        channelId,
+        channel_id,
         name
       )
     `)

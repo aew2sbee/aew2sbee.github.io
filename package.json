@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "fetch": "ts-node scripts/fetch_supabase.ts"
+    "fetch": "ts-node --esm scripts/fetch_supabase.ts"
   },
   "dependencies": {
     "next": "15.5.3",
