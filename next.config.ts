@@ -7,7 +7,6 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,    // 画像最適化オフ
   },
-  // assetPrefix: "/public-study-log-page/",
 };
 
 export default nextConfig;
