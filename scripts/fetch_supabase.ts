@@ -39,7 +39,7 @@ const fetchAndSaveStudyData = async () => {
   console.log('studies:', studies);
   // userIdを集める
   const userIds = Array.from(new Set(studies.map(s => s.userId).filter((id): id is number => id !== undefined)));
-
+  console.log('userIds:', userIds);
   // usersデータ取得
   const { data: users, error: userError } = await supabase
     .from('users')
