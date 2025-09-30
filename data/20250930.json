@@ -2,7 +2,13 @@
   "data": [
     {
       "channelId": "UCdsHgUWtZ7t55pj3YWi0VoQ",
-      "name": "tohu"
+      "name": "tohu",
+      "timeSec": 4965
+    },
+    {
+      "channelId": "UCkBSZ6a0qW_X_jjPhekzDwQ",
+      "name": "ゆきぽ",
+      "timeSec": 10409
     }
   ]
 }
