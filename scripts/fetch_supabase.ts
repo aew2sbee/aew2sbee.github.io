@@ -23,14 +23,14 @@ const getJapanDateYYYYMMDD = (): string => {
 };
 
 const fetchAndSaveStudyData = async () => {
-  const timestamp25HoursAgo = get25HoursAgoISO ();
+  const timestamp25HoursAgo = get25HoursAgoISO();
   console.log('Fetching data since:', timestamp25HoursAgo);
 
   // studyデータ取得
   const { data: studies, error: studyError } = await supabase
     .from('study')
     .select('*')
-    .lt('timestamp', timestamp25HoursAgo);
+    .gte('timestamp', timestamp25HoursAgo);
 
   if (studyError) {
     console.error('Error fetching study data:', studyError);
