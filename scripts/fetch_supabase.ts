@@ -59,10 +59,10 @@ const fetchAndSaveStudyData = async () => {
   console.log('users:', users);
   // study に user 情報をマージして希望の形式に変換
   const outputData = studies.map(s => {
-    const user = users.find(u => u.id === s.userId);
+    const user = users.find(u => u.id === s.user_id);
     return {
-      channelId: user?.channel_id ?? '',
-      name: user?.name ?? '',
+      channelId: user.channel_id,
+      name: user.name,
       timeSec: s.timeSec
     };
   });
