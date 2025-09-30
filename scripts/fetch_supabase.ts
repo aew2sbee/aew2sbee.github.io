@@ -37,8 +37,8 @@ async function fetchAndSaveStudyData() {
     .from('study')
     .select(`
       id,
-      userId,
-      timeSec,
+      user_id,
+      time_sec,
       timestamp,
       users (
         id,
