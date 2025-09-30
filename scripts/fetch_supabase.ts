@@ -63,7 +63,7 @@ const fetchAndSaveStudyData = async () => {
     return {
       channelId: user.channel_id,
       name: user.name,
-      timeSec: s.timeSec
+      timeSec: s.time_sec
     };
   });
 
