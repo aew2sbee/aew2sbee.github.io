@@ -36,7 +36,7 @@ const fetchAndSaveStudyData = async () => {
     console.error('Error fetching study data:', studyError);
     process.exit(1);
   }
-
+  console.log('studies:', studies);
   // userIdを集める
   const userIds = Array.from(new Set(studies.map(s => s.userId).filter((id): id is number => id !== undefined)));
 
@@ -51,6 +51,7 @@ const fetchAndSaveStudyData = async () => {
     process.exit(1);
   }
 
+  console.log('users:', users);
   // study に user 情報をマージして希望の形式に変換
   const outputData = studies.map(s => {
     const user = users.find(u => u.id === s.userId);
