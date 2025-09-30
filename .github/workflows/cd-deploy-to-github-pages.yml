@@ -2,10 +2,10 @@ name: CD - Deploy to GitHub Pages
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-      - develop
+  workflow_run:
+    workflows: ["CD - Fetch Supabase Data"]
+    types:
+      - completed
 
 jobs:
   deploy:
