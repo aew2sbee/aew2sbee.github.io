@@ -1,0 +1,35 @@
+name: Fetch Supabase Data
+
+on:
+  workflow_dispatch: # 手動実行
+  schedule:
+    - cron: '0 19 * * *' # 日本時間 04:00
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch data from Supabase
+        run: npm run fetch
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: supabase-data
+          path: output.json
