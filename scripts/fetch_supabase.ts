@@ -6,12 +6,12 @@ const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-const getJapanTime25HoursAgoISO = (): string => {
+const get25HoursAgoISO = (): string => {
   const now = new Date();
-  const japanTime = new Date(now.getTime() + 9 * 60 * 60 * 1000);
-  japanTime.setHours(japanTime.getHours() - 25);
-  return new Date(japanTime.getTime() - 9 * 60 * 60 * 1000).toISOString();
+  const hoursAgo25 = new Date(now.getTime() - 25 * 60 * 60 * 1000);
+  return hoursAgo25.toISOString();
 };
+
 
 const getJapanDateYYYYMMDD = (): string => {
   const now = new Date();
@@ -23,7 +23,7 @@ const getJapanDateYYYYMMDD = (): string => {
 };
 
 const fetchAndSaveStudyData = async () => {
-  const timestamp25HoursAgo = getJapanTime25HoursAgoISO();
+  const timestamp25HoursAgo = get25HoursAgoISO ();
   console.log('Fetching data since:', timestamp25HoursAgo);
 
   // studyデータ取得
