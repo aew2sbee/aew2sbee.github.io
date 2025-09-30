@@ -1,4 +1,4 @@
-name: Fetch Supabase Data
+name: CD - Fetch Supabase Data
 
 on:
   workflow_dispatch: # 手動実行
