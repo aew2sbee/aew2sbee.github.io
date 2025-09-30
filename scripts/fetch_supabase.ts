@@ -36,6 +36,11 @@ const fetchAndSaveStudyData = async () => {
     console.error('Error fetching study data:', studyError);
     process.exit(1);
   }
+  // studies が空の場合は処理を終了
+  if (!studies || studies.length === 0) {
+    console.log('No study data found. Exiting.');
+    process.exit(0);
+  }
   console.log('studies:', studies);
   // userIdを集める
   const userIds = Array.from(new Set(studies.map(s => s.user_id)));
