@@ -46,7 +46,7 @@ async function fetchAndSaveStudyData() {
         name
       )
     `)
-    .lt('timestamp', timestamp25HoursAgo);
+    .gte('timestamp', timestamp25HoursAgo);
 
   if (error) {
     console.error('Error fetching data:', error);
