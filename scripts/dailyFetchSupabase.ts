@@ -1,12 +1,21 @@
-import { fetchDaily } from '@/db/study';
-import { fetchByUserIds } from '@/db/user';
+import { supabase } from '@/db/supabase';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 
+const get25HoursAgoISO = (): string => {
+  const now = new Date();
+  const hoursAgo25 = new Date(now.getTime() - 25 * 60 * 60 * 1000);
+  return hoursAgo25.toISOString();
+};
 
-const main = async () => {
+const fetchAndSaveStudyData = async () => {
+  const timestamp25HoursAgo = get25HoursAgoISO();
+  console.log('Fetching data since:', timestamp25HoursAgo);
 
   // studyデータ取得
-  const { data: studies, error: studyError } = await fetchDaily();
+  const { data: studies, error: studyError } = await supabase
+    .from('study')
+    .select('*')
+    .gte('timestamp', timestamp25HoursAgo);
 
   if (studyError) {
     console.error('Error fetching study data:', studyError);
@@ -18,11 +27,14 @@ const main = async () => {
     process.exit(0);
   }
   console.log('studies:', studies);
-
-  // usersデータ取得
+  // userIdを集める
   const userIds = Array.from(new Set(studies.map(s => s.user_id)));
   console.log('userIds:', userIds);
-  const { data: users, error: userError } = await fetchByUserIds(userIds);
+  // usersデータ取得
+  const { data: users, error: userError } = await supabase
+    .from('users')
+    .select('*')
+    .in('id', userIds);
 
   if (userError) {
     console.error('Error fetching users data:', userError);
@@ -44,7 +56,7 @@ const main = async () => {
 
   // ディレクトリ作成
   const dir = 'data';
-  const yyyymmdd = studies[0].timestamp.slice(0,10).replace(/-/g,'');
+  const yyyymmdd = studies[0].timestamp.toISOString().slice(0,10).replace(/-/g,'');
   if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
 
   // ファイル保存
@@ -54,4 +66,4 @@ const main = async () => {
   console.log(`Saved ${outputData.length} records to ${filePath}`);
 };
 
-main();
+fetchAndSaveStudyData();
