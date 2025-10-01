@@ -21,7 +21,7 @@ jobs:
         run: npm ci
 
       - name: Fetch data from Supabase
-        run: npm run all fetch
+        run: npm run fetch-all
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
