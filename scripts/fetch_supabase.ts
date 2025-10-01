@@ -61,7 +61,7 @@ const fetchAndSaveStudyData = async () => {
 
   // ディレクトリ作成
   const dir = 'data';
-  const yyyymmdd = studies[0].timestamp.toISOString().slice(0,10).replace(/-/g,'');
+  const yyyymmdd = studies[0].timestamp.slice(0,10).replace(/-/g,'');
   if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
 
   // ファイル保存
