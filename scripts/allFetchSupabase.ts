@@ -1,6 +1,6 @@
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 import { createClient } from '@supabase/supabase-js';
-import { fetchAllGroupedByDate } from '../src/db/study.js';
+import { fetchAllGroupedByDate } from '../src/db/study';
 
 // 定数定義
 const OUTPUT_DIR = 'data';
