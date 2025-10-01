@@ -1,14 +1,10 @@
 import { supabase } from '@/db/supabase';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 
-const get25HoursAgoISO = (): string => {
+const fetchAndSaveStudyData = async () => {
   const now = new Date();
   const hoursAgo25 = new Date(now.getTime() - 25 * 60 * 60 * 1000);
-  return hoursAgo25.toISOString();
-};
-
-const fetchAndSaveStudyData = async () => {
-  const timestamp25HoursAgo = get25HoursAgoISO();
+  const timestamp25HoursAgo = hoursAgo25.toISOString();
   console.log('Fetching data since:', timestamp25HoursAgo);
 
   // studyデータ取得
