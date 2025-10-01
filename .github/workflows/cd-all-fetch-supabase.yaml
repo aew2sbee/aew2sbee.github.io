@@ -1,9 +1,7 @@
-name: CD - Fetch Supabase Data
+name: CD - All Fetch Supabase Data
 
 on:
-  workflow_dispatch: # 手動実行
-  schedule:
-    - cron: '0 19 * * *' # 日本時間 04:00
+  workflow_dispatch:
 
 jobs:
   fetch:
@@ -23,7 +21,7 @@ jobs:
         run: npm ci
 
       - name: Fetch data from Supabase
-        run: npm run fetch
+        run: npm run all fetch
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}

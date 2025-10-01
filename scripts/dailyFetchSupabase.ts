@@ -1,26 +1,12 @@
+import { fetchDaily } from '@/db/study';
+import { fetchByUserIds } from '@/db/user';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
-import { createClient } from '@supabase/supabase-js';
 
-const SUPABASE_URL = process.env.SUPABASE_URL!;
-const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
-
-const get25HoursAgoISO = (): string => {
-  const now = new Date();
-  const hoursAgo25 = new Date(now.getTime() - 25 * 60 * 60 * 1000);
-  return hoursAgo25.toISOString();
-};
-
-const fetchAndSaveStudyData = async () => {
-  const timestamp25HoursAgo = get25HoursAgoISO();
-  console.log('Fetching data since:', timestamp25HoursAgo);
+const main = async () => {
 
   // studyデータ取得
-  const { data: studies, error: studyError } = await supabase
-    .from('study')
-    .select('*')
-    .gte('timestamp', timestamp25HoursAgo);
+  const { data: studies, error: studyError } = await fetchDaily();
 
   if (studyError) {
     console.error('Error fetching study data:', studyError);
@@ -32,14 +18,11 @@ const fetchAndSaveStudyData = async () => {
     process.exit(0);
   }
   console.log('studies:', studies);
-  // userIdを集める
+
+  // usersデータ取得
   const userIds = Array.from(new Set(studies.map(s => s.user_id)));
   console.log('userIds:', userIds);
-  // usersデータ取得
-  const { data: users, error: userError } = await supabase
-    .from('users')
-    .select('*')
-    .in('id', userIds);
+  const { data: users, error: userError } = await fetchByUserIds(userIds);
 
   if (userError) {
     console.error('Error fetching users data:', userError);
@@ -71,4 +54,4 @@ const fetchAndSaveStudyData = async () => {
   console.log(`Saved ${outputData.length} records to ${filePath}`);
 };
 
-fetchAndSaveStudyData();
+main();

@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "fetch": "ts-node scripts/fetch_supabase.ts"
+    "all fetch": "ts-node scripts/allFetchSupabase.ts",
+    "daily fetch": "ts-node scripts/dailyFetchSupabase.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.44.4",
