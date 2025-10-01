@@ -12,16 +12,6 @@ const get25HoursAgoISO = (): string => {
   return hoursAgo25.toISOString();
 };
 
-
-const getJapanDateYYYYMMDD = (): string => {
-  const now = new Date();
-  const japanTime = new Date(now.getTime() + 9 * 60 * 60 * 1000);
-  const yyyy = japanTime.getFullYear();
-  const mm = String(japanTime.getMonth() + 1).padStart(2, '0');
-  const dd = String(japanTime.getDate()).padStart(2, '0');
-  return `${yyyy}${mm}${dd}`;
-};
-
 const fetchAndSaveStudyData = async () => {
   const timestamp25HoursAgo = get25HoursAgoISO();
   console.log('Fetching data since:', timestamp25HoursAgo);
@@ -71,10 +61,11 @@ const fetchAndSaveStudyData = async () => {
 
   // ディレクトリ作成
   const dir = 'data';
+  const yyyymmdd = studies[0].timestamp.toISOString().slice(0,10).replace(/-/g,'');
   if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
 
   // ファイル保存
-  const filePath = `${dir}/${getJapanDateYYYYMMDD()}.json`;
+  const filePath = `${dir}/${yyyymmdd}.json`;
   writeFileSync(filePath, JSON.stringify(finalOutput, null, 2));
 
   console.log(`Saved ${outputData.length} records to ${filePath}`);
