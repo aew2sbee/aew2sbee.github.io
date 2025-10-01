@@ -3,15 +3,14 @@ import { writeFileSync, mkdirSync, existsSync } from 'fs';
 
 const main = async () => {
   // 昨日の日付範囲を計算
-  const yesterday = new Date();
-  yesterday.setDate(yesterday.getDate() - 1);
-  yesterday.setHours(0, 0, 0, 0);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-  const yesterdayEnd = new Date(yesterday);
-  yesterdayEnd.setHours(23, 59, 59, 999);
+  const todayEnd = new Date(today);
+  todayEnd.setHours(23, 59, 59, 999);
 
-  const startTime = yesterday.toISOString();
-  const endTime = yesterdayEnd.toISOString();
+  const startTime = today.toISOString();
+  const endTime = todayEnd.toISOString();
 
   console.log('Fetching data for yesterday:', startTime, 'to', endTime);
 
