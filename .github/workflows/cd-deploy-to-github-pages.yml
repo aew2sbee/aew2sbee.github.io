@@ -3,7 +3,7 @@ name: CD - Deploy to GitHub Pages
 on:
   workflow_dispatch:
   workflow_run:
-    workflows: ["CD - Fetch Supabase Data"]
+    workflows: ["CD - Daily Fetch Supabase Data"]
     types:
       - completed
 
