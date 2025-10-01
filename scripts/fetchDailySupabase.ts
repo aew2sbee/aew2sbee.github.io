@@ -1,17 +1,26 @@
 import { supabase } from '@/db/supabase';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 
-const fetchAndSaveStudyData = async () => {
-  const now = new Date();
-  const hoursAgo25 = new Date(now.getTime() - 25 * 60 * 60 * 1000);
-  const timestamp25HoursAgo = hoursAgo25.toISOString();
-  console.log('Fetching data since:', timestamp25HoursAgo);
+const main = async () => {
+  // 昨日の日付範囲を計算
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  yesterday.setHours(0, 0, 0, 0);
+
+  const yesterdayEnd = new Date(yesterday);
+  yesterdayEnd.setHours(23, 59, 59, 999);
+
+  const startTime = yesterday.toISOString();
+  const endTime = yesterdayEnd.toISOString();
+
+  console.log('Fetching data for yesterday:', startTime, 'to', endTime);
 
   // studyデータ取得
   const { data: studies, error: studyError } = await supabase
     .from('study')
     .select('*')
-    .gte('timestamp', timestamp25HoursAgo);
+    .gte('timestamp', startTime)
+    .lte('timestamp', endTime);
 
   if (studyError) {
     console.error('Error fetching study data:', studyError);
@@ -62,4 +71,4 @@ const fetchAndSaveStudyData = async () => {
   console.log(`Saved ${outputData.length} records to ${filePath}`);
 };
 
-fetchAndSaveStudyData();
+main();
