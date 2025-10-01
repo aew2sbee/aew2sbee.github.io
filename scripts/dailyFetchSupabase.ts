@@ -1,5 +1,5 @@
-import { fetchDaily } from '../src/db/study';
-import { fetchByUserIds } from '../src/db/user';
+import { fetchDaily } from '@/db/study';
+import { fetchByUserIds } from '@/db/user';
 import { writeFileSync, mkdirSync, existsSync } from 'fs';
 
 
