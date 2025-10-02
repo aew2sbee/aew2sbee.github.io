@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(npm run dev:*)",
+      "Bash(npm outdated)",
+      "Bash(npm run build:*)",
+      "Bash(npx nest build:*)",
+      "Bash(pkill:*)",
+      "Bash(npm install:*)",
+      "Bash(npm update:*)",
+      "Bash(rm:*)",
+      "Bash(sudo rm:*)",
+      "Bash(npm cache clean:*)",
+      "Bash(sed:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(node:*)"
+    ]
+  }
+}
