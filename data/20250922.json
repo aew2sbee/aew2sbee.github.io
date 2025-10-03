@@ -1,49 +1,49 @@
 {
   "data": [
     {
-      "channel_id": "UCDV95uUZlqOmxJ0hONnoALw",
+      "channelId": "UCDV95uUZlqOmxJ0hONnoALw",
       "name": "小倉あん",
-      "time_sec": 29946
+      "timeSec": 29946
     },
     {
-      "channel_id": "UCDTWKvGJ1sDOlYHGYtAR7EQ",
+      "channelId": "UCDTWKvGJ1sDOlYHGYtAR7EQ",
       "name": "琴音 倉内",
-      "time_sec": 16373
+      "timeSec": 16373
     },
     {
-      "channel_id": "UCkBSZ6a0qW_X_jjPhekzDwQ",
+      "channelId": "UCkBSZ6a0qW_X_jjPhekzDwQ",
       "name": "ゆきぽ",
-      "time_sec": 13972
+      "timeSec": 13972
     },
     {
-      "channel_id": "UCIsZNFLIooBrdnqzg7R37qg",
+      "channelId": "UCIsZNFLIooBrdnqzg7R37qg",
       "name": "ぐぅぐぅ",
-      "time_sec": 8482
+      "timeSec": 8482
     },
     {
-      "channel_id": "UCJeqXqAFicpGzWZbG0nVU6A",
+      "channelId": "UCJeqXqAFicpGzWZbG0nVU6A",
       "name": "いかす",
-      "time_sec": 18126
+      "timeSec": 18126
     },
     {
-      "channel_id": "UCSIkc-T3j0oqQuoFaYrpOJQ",
+      "channelId": "UCSIkc-T3j0oqQuoFaYrpOJQ",
       "name": "こいみず",
-      "time_sec": 4835
+      "timeSec": 4835
     },
     {
-      "channel_id": "UC6HPl7foTp2UZAZWPVC7bsw",
+      "channelId": "UC6HPl7foTp2UZAZWPVC7bsw",
       "name": "ごま",
-      "time_sec": 17117
+      "timeSec": 17117
     },
     {
-      "channel_id": "UC6dzpfLDOZpgLEbD6RjR-oQ",
+      "channelId": "UC6dzpfLDOZpgLEbD6RjR-oQ",
       "name": "がんばろ",
-      "time_sec": 1198
+      "timeSec": 1198
     },
     {
-      "channel_id": "UCiopMjPVHjwP_ciJTMIAnzA",
+      "channelId": "UCiopMjPVHjwP_ciJTMIAnzA",
       "name": "SC目指してるぬぅ NU",
-      "time_sec": 3705
+      "timeSec": 3705
     }
   ]
 }

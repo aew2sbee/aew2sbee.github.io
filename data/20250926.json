@@ -1,54 +1,54 @@
 {
   "data": [
     {
-      "channel_id": "UC6dzpfLDOZpgLEbD6RjR-oQ",
+      "channelId": "UC6dzpfLDOZpgLEbD6RjR-oQ",
       "name": "がんばろ",
-      "time_sec": 4071
+      "timeSec": 4071
     },
     {
-      "channel_id": "UCIsZNFLIooBrdnqzg7R37qg",
+      "channelId": "UCIsZNFLIooBrdnqzg7R37qg",
       "name": "ぐぅぐぅ",
-      "time_sec": 22884
+      "timeSec": 22884
     },
     {
-      "channel_id": "UC_YX8IFz6jQ-7CW_RqeKKsw",
+      "channelId": "UC_YX8IFz6jQ-7CW_RqeKKsw",
       "name": "ももたろう",
-      "time_sec": 18010
+      "timeSec": 18010
     },
     {
-      "channel_id": "UCDV95uUZlqOmxJ0hONnoALw",
+      "channelId": "UCDV95uUZlqOmxJ0hONnoALw",
       "name": "小倉あん",
-      "time_sec": 26305
+      "timeSec": 26305
     },
     {
-      "channel_id": "UCdsHgUWtZ7t55pj3YWi0VoQ",
+      "channelId": "UCdsHgUWtZ7t55pj3YWi0VoQ",
       "name": "tohu",
-      "time_sec": 16883
+      "timeSec": 16883
     },
     {
-      "channel_id": "UCkBSZ6a0qW_X_jjPhekzDwQ",
+      "channelId": "UCkBSZ6a0qW_X_jjPhekzDwQ",
       "name": "ゆきぽ",
-      "time_sec": 14496
+      "timeSec": 14496
     },
     {
-      "channel_id": "UCRpDj4kKe4V0C6omqA7Nmug",
+      "channelId": "UCRpDj4kKe4V0C6omqA7Nmug",
       "name": "masmut",
-      "time_sec": 5301
+      "timeSec": 5301
     },
     {
-      "channel_id": "UCEMSNOYTYJ5iSwwSU7oP9ug",
+      "channelId": "UCEMSNOYTYJ5iSwwSU7oP9ug",
       "name": "ar",
-      "time_sec": 21111
+      "timeSec": 21111
     },
     {
-      "channel_id": "UC4PY66Bn8jpGJ_7I2uCtMFA",
+      "channelId": "UC4PY66Bn8jpGJ_7I2uCtMFA",
       "name": "転校生",
-      "time_sec": 10058
+      "timeSec": 10058
     },
     {
-      "channel_id": "UCEgzo1yNYRKm6HkuroYl4xw",
+      "channelId": "UCEgzo1yNYRKm6HkuroYl4xw",
       "name": "おしるこポタージュ",
-      "time_sec": 12300
+      "timeSec": 12300
     }
   ]
 }

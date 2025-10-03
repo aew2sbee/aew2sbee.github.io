@@ -1,54 +1,54 @@
 {
   "data": [
     {
-      "channel_id": "UCDV95uUZlqOmxJ0hONnoALw",
+      "channelId": "UCDV95uUZlqOmxJ0hONnoALw",
       "name": "小倉あん",
-      "time_sec": 26666
+      "timeSec": 26666
     },
     {
-      "channel_id": "UCd6QtfSvwrB3JJlfbE1WiKg",
+      "channelId": "UCd6QtfSvwrB3JJlfbE1WiKg",
       "name": "ちぃ",
-      "time_sec": 25836
+      "timeSec": 25836
     },
     {
-      "channel_id": "UC_YX8IFz6jQ-7CW_RqeKKsw",
+      "channelId": "UC_YX8IFz6jQ-7CW_RqeKKsw",
       "name": "ももたろう",
-      "time_sec": 21498
+      "timeSec": 21498
     },
     {
-      "channel_id": "UCkBSZ6a0qW_X_jjPhekzDwQ",
+      "channelId": "UCkBSZ6a0qW_X_jjPhekzDwQ",
       "name": "ゆきぽ",
-      "time_sec": 22530
+      "timeSec": 22530
     },
     {
-      "channel_id": "UCJeqXqAFicpGzWZbG0nVU6A",
+      "channelId": "UCJeqXqAFicpGzWZbG0nVU6A",
       "name": "いかす",
-      "time_sec": 15409
+      "timeSec": 15409
     },
     {
-      "channel_id": "UCEMSNOYTYJ5iSwwSU7oP9ug",
+      "channelId": "UCEMSNOYTYJ5iSwwSU7oP9ug",
       "name": "ar",
-      "time_sec": 23094
+      "timeSec": 23094
     },
     {
-      "channel_id": "UCDgJs9YTU-tSQBfSpwbjDjw",
+      "channelId": "UCDgJs9YTU-tSQBfSpwbjDjw",
       "name": "rrrrrrr",
-      "time_sec": 26598
+      "timeSec": 26598
     },
     {
-      "channel_id": "UCIsZNFLIooBrdnqzg7R37qg",
+      "channelId": "UCIsZNFLIooBrdnqzg7R37qg",
       "name": "ぐぅぐぅ",
-      "time_sec": 29891
+      "timeSec": 29891
     },
     {
-      "channel_id": "UCdsHgUWtZ7t55pj3YWi0VoQ",
+      "channelId": "UCdsHgUWtZ7t55pj3YWi0VoQ",
       "name": "tohu",
-      "time_sec": 10366
+      "timeSec": 10366
     },
     {
-      "channel_id": "UCEgzo1yNYRKm6HkuroYl4xw",
+      "channelId": "UCEgzo1yNYRKm6HkuroYl4xw",
       "name": "おしるこポタージュ",
-      "time_sec": 29408
+      "timeSec": 29408
     }
   ]
 }
