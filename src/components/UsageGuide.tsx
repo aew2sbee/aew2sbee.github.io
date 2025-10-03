@@ -19,7 +19,7 @@ export default function UsageGuide() {
               </svg>
             </div>
             <div>
-              <h4 className="text-xl font-semibold text-yellow-800 mb-1">重要：PC版でのみ利用可能</h4>
+              <h4 className="text-xl font-semibold text-yellow-800 mb-1">重要:PC版でのみ利用可能</h4>
               <p className="text-sm text-yellow-700">
                 この方法はPCのブラウザー（Chrome、Firefox、Safari等）からYouTubeにアクセスした場合のみ利用できます。<br/>
                 <strong>スマートフォン・タブレットのYouTubeアプリでは「チャンネルIDをコピー」が存在しません。</strong>
