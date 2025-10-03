@@ -62,6 +62,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   try {
     const files = fs.readdirSync(dataDir).filter(file => file.endsWith('.json'));
+    console.log(`Found ${files.length} JSON files in data directory`);
 
     // 全JSONファイルからチャンネルIDを抽出
     for (const file of files) {
@@ -70,16 +71,25 @@ export const getStaticPaths: GetStaticPaths = async () => {
       const dayData: DayData = JSON.parse(fileContent);
 
       dayData.data.forEach(item => {
-        channelIds.add(item.channelId);
+        if (item.channelId) {
+          channelIds.add(item.channelId);
+        }
       });
     }
+
+    console.log(`Extracted ${channelIds.size} unique channel IDs`);
   } catch (error) {
     console.error('Error reading data files:', error);
+    throw error; // エラーを上に投げてビルドを失敗させる
   }
 
   const paths = Array.from(channelIds).map(channelId => ({
     params: { channelId }
   }));
+
+  if (paths.length === 0) {
+    throw new Error('No channel IDs found in data files');
+  }
 
   return {
     paths,
