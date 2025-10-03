@@ -143,21 +143,20 @@ export const getStaticProps: GetStaticProps<ChannelPageProps> = async (context) 
         const fileContent = fs.readFileSync(filePath, 'utf-8');
         const dayData: DayData = JSON.parse(fileContent);
 
-        // 指定されたchannelIdでフィルターし、同じchannelIdの時間を合計
-        const userDataList = dayData.data.filter(item => item.channelId === channelIdStr);
+        // 指定されたchannelIdでfindで探す
+        const userData = dayData.data.find(item => item.channelId === channelIdStr);
 
-        if (userDataList.length > 0) {
-          const totalTimeSec = userDataList.reduce((sum, item) => sum + item.timeSec, 0);
+        if (userData) {
           allData[date] = {
             channelId: channelIdStr,
-            name: userDataList[0].name,
-            timeSec: totalTimeSec
+            name: userData.name,
+            timeSec: userData.timeSec
           };
 
-          totalTime += totalTimeSec;
+          totalTime += userData.timeSec;
           // 初回のみチャンネル名を設定
           if (!channelName) {
-            channelName = userDataList[0].name;
+            channelName = userData.name;
           }
         } else {
           // データが存在しない日はnullを設定
