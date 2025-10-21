@@ -17,7 +17,7 @@ const main = async () => {
   // studyデータ取得
   const { data: studies, error: studyError } = await supabase
     .from('study')
-    .select('*')
+    .select('user_id, total_time:time_sec.sum(), timestamp')
     .gte('timestamp', startTime)
     .lte('timestamp', endTime);
 
@@ -52,7 +52,7 @@ const main = async () => {
     return {
       channelId: user.channel_id,
       name: user.name,
-      timeSec: s.time_sec
+      timeSec: s.total_time
     };
   });
 
