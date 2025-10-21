@@ -14,10 +14,10 @@ const main = async () => {
 
   console.log('Fetching data for yesterday:', startTime, 'to', endTime);
 
-  // studyデータ取得
+  // studyデータ取得（全件取得）
   const { data: studies, error: studyError } = await supabase
     .from('study')
-    .select('user_id, total_time:time_sec.sum(), timestamp')
+    .select('user_id, time_sec, timestamp')
     .gte('timestamp', startTime)
     .lte('timestamp', endTime);
 
@@ -31,8 +31,26 @@ const main = async () => {
     process.exit(0);
   }
   console.log('studies:', studies);
+
+  // user_idごとにtime_secを集計
+  const aggregatedData = studies.reduce((acc, curr) => {
+    const userId = curr.user_id;
+    if (!acc[userId]) {
+      acc[userId] = {
+        user_id: userId,
+        total_time: 0,
+        timestamp: curr.timestamp
+      };
+    }
+    acc[userId].total_time += curr.time_sec;
+    return acc;
+  }, {} as Record<string, { user_id: string; total_time: number; timestamp: string }>);
+
+  const aggregatedStudies = Object.values(aggregatedData);
+  console.log('aggregated studies:', aggregatedStudies);
+
   // userIdを集める
-  const userIds = Array.from(new Set(studies.map(s => s.user_id)));
+  const userIds = Array.from(new Set(aggregatedStudies.map(s => s.user_id)));
   console.log('userIds:', userIds);
   // usersデータ取得
   const { data: users, error: userError } = await supabase
@@ -47,7 +65,7 @@ const main = async () => {
 
   console.log('users:', users);
   // study に user 情報をマージして希望の形式に変換
-  const outputData = studies.map(s => {
+  const outputData = aggregatedStudies.map(s => {
     const user = users.find(u => u.id === s.user_id);
     return {
       channelId: user.channel_id,
@@ -60,7 +78,7 @@ const main = async () => {
 
   // ディレクトリ作成
   const dir = 'data';
-  const yyyymmdd = studies[0].timestamp.slice(0,10).replace(/-/g,'');
+  const yyyymmdd = aggregatedStudies[0].timestamp.slice(0,10).replace(/-/g,'');
   if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
 
   // ファイル保存
