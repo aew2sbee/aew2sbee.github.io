@@ -21,24 +21,14 @@ interface ChannelPageProps {
   totalTime: number;
   channelName: string;
   lastUpdateDate: string;
+  last7DaysTime: number;
+  last30DaysTime: number;
 }
 
-export default function ChannelPage({ allData, totalTime, channelName, lastUpdateDate }: ChannelPageProps) {
+export default function ChannelPage({ allData, totalTime, channelName, lastUpdateDate, last7DaysTime, last30DaysTime }: ChannelPageProps) {
   const [weekOffset, setWeekOffset] = useState(0);
   const [monthOffset, setMonthOffset] = useState(0);
   const captureTargetRef = useRef<HTMLDivElement>(null);
-
-  // 過去7日間の合計時間を計算
-  const last7DaysData = getLast7Days(0, allData);
-  const last7DaysTime = last7DaysData.reduce((sum, item) => {
-    return sum + (item.data?.timeSec || 0);
-  }, 0);
-
-  // 過去30日間の合計時間を計算
-  const last30DaysData = getLast30Days(0, allData);
-  const last30DaysTime = last30DaysData.reduce((sum, item) => {
-    return sum + (item.data?.timeSec || 0);
-  }, 0);
 
   return (
     <div className="min-h-screen bg-gray-100">

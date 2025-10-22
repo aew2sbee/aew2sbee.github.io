@@ -6,6 +6,7 @@
 import fs from 'fs';
 import path from 'path';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { getLast7Days, getLast30Days } from './dateUtils';
 
 /**
  * 学習データの型定義
@@ -41,6 +42,10 @@ interface ChannelPageProps {
   channelName: string;
   /** 最終更新日（YYYYMMDD形式） */
   lastUpdateDate: string;
+  /** 過去7日間の合計時間（秒） */
+  last7DaysTime: number;
+  /** 過去30日間の合計時間（秒） */
+  last30DaysTime: number;
 }
 
 /**
@@ -168,13 +173,27 @@ export const getStaticProps: GetStaticProps<ChannelPageProps> = async (context) 
       }
     }
 
+    // 過去7日間の合計時間を計算
+    const last7DaysData = getLast7Days(0, allData);
+    const last7DaysTime = last7DaysData.reduce((sum, item) => {
+      return sum + (item.data?.timeSec || 0);
+    }, 0);
+
+    // 過去30日間の合計時間を計算
+    const last30DaysData = getLast30Days(0, allData);
+    const last30DaysTime = last30DaysData.reduce((sum, item) => {
+      return sum + (item.data?.timeSec || 0);
+    }, 0);
+
     return {
       props: {
         channelId: channelIdStr,
         allData,
         totalTime,
         channelName: channelName || 'Unknown Channel',
-        lastUpdateDate
+        lastUpdateDate,
+        last7DaysTime,
+        last30DaysTime
       }
     };
   } catch (error) {
@@ -186,7 +205,9 @@ export const getStaticProps: GetStaticProps<ChannelPageProps> = async (context) 
         allData: {},
         totalTime: 0,
         channelName: 'Unknown Channel',
-        lastUpdateDate: ''
+        lastUpdateDate: '',
+        last7DaysTime: 0,
+        last30DaysTime: 0
       }
     };
   }
